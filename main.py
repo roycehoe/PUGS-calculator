@@ -8,7 +8,7 @@ DISPLAY_MENU_BANNER = """
 DISPLAY_MENU_INTRODUCTION = "Hi there! Thank you for using my calculator app"
 DISPLAY_MENU_INTRODUCTION_EXIT = "Goodbye"
 DISPLAY_CALCULATOR_ERROR = "Hmm, something went wrong. Let us try this again"
-DISPLAY_CALCULATOR_RESULT = "Ans:"
+DISPLAY_CALCULATOR_RESULT = "Ans"
 PROMPT_INPUT = "Input: "
 
 DISPLAY_MENU_SELECTION = """
@@ -17,7 +17,7 @@ Please select from one of the following options by inputting the corresponding n
 [1] - Begin
 [0] - Exit
 """
-DISPLAY_INVALID_INPUT = "You have entered an invalid number. Please try again"
+DISPLAY_INVALID_INPUT = "You have entered an invalid option. Please try again"
 
 DISPLAY_MATHEMATICAL_OPERATION_MENU = """
 Please select your mathematical operation by inputing the corresponding number
@@ -86,7 +86,7 @@ def get_menu_input() -> MenuSelection:
             print(DISPLAY_INVALID_INPUT)
 
 
-def _get_mathematical_selection(
+def _get_mathematical_operation_selection(
     mathematical_operation_input: str,
 ) -> MathematicalOperation:
     if mathematical_operation_input == "1":
@@ -104,12 +104,12 @@ def get_mathematial_operation_input() -> MathematicalOperation:
     while True:
         try:
             print(DISPLAY_MATHEMATICAL_OPERATION_MENU)
-            mathematical_operation_selection = input(PROMPT_INPUT)
-            mathematical_operation_input = _get_mathematical_selection(
-                mathematical_operation_selection
+            mathematical_operation_input = input(PROMPT_INPUT)
+            mathematical_operation_selection = _get_mathematical_operation_selection(
+                mathematical_operation_input
             )
-            return mathematical_operation_input
-        except InvalidMenuSelectionError:
+            return mathematical_operation_selection
+        except InvalidMathematicalOperationError:
             print(DISPLAY_INVALID_INPUT)
 
 
@@ -167,4 +167,4 @@ while True:
         print(DISPLAY_MENU_INTRODUCTION_EXIT)
         exit()
     calculator_result = get_calculator_result()
-    print(f"{DISPLAY_CALCULATOR_RESULT}: {calculator_result}")
+    print(f"\n{DISPLAY_CALCULATOR_RESULT}: {calculator_result}")
