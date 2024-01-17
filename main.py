@@ -1,12 +1,15 @@
 from enum import Enum, auto
 
-TEXT_INTRODUCTION = "Hi there! Thank you for using my calculator app"
-TEXT_EXIT = "Goodbye"
+MENU_INTRODUCTION = "Hi there! Thank you for using my calculator app"
+MENU_EXIT = "Goodbye"
 
-PROMPT_INTRODUCTION = "Please press 1 to begin. Otherwise, press 0 to exit"
-PROMPT_INTRODUCTION_INVALID_INPUT = (
-    "You have entered an invalid prompt. Please try again"
-)
+PROMPT_MENU_SELECTION = """
+Please select from one of the following options by inputting the corresponding number
+
+[1] - Begin
+[2] - Exit
+"""
+PROMPT_MENU_INVALID_INPUT = "You have entered an invalid number. Please try again"
 
 PROMPT_FIRST_NUMERICAL_CONSTANT = "Please input your first number"
 PROMPT_SECOND_NUMERICAL_CONSTANT = "Please input your second number"
@@ -40,3 +43,5 @@ class InvalidNumericalConstantError(Exception):
     pass
 
 
+print(MENU_INTRODUCTION)
+introduction_input = input(PROMPT_MENU_SELECTION)
