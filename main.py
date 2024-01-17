@@ -6,19 +6,20 @@ DISPLAY_MENU_BANNER = """
 --------------------------------
 """
 DISPLAY_MENU_INTRODUCTION = "Hi there! Thank you for using my calculator app"
-DISPLAY_MENU_EXIT = "Goodbye"
+DISPLAY_MENU_INTRODUCTION_EXIT = "Goodbye"
 DISPLAY_CALCULATOR_ERROR = "Hmm, something went wrong. Let us try this again"
 DISPLAY_CALCULATOR_RESULT = "Ans:"
+PROMPT_INPUT = "Input: "
 
-PROMPT_MENU_SELECTION = """
+DISPLAY_MENU_SELECTION = """
 Please select from one of the following options by inputting the corresponding number
 
 [1] - Begin
 [0] - Exit
 """
-PROMPT_INVALID_INPUT = "You have entered an invalid number. Please try again"
+DISPLAY_INVALID_INPUT = "You have entered an invalid number. Please try again"
 
-PROMPT_MATHEMATICAL_OPERATION = """
+DISPLAY_MATHEMATICAL_OPERATION_MENU = """
 Please select your mathematical operation by inputing the corresponding number
 
 [1] - Addition
@@ -28,9 +29,9 @@ Please select your mathematical operation by inputing the corresponding number
 """
 PROMPT_FIRST_NUMERICAL_CONSTANT = "Please input your first number: "
 PROMPT_SECOND_NUMERICAL_CONSTANT = "Please input your second number: "
-PROMPT_INVALID_NUMBER = "You have entered an invalid number. Please try again"
+DISPLAY_INVALID_NUMBER_MESSAGE = "You have entered an invalid number. Please try again"
 
-PROMPT_USE_CALCULATOR_AGAIN = """
+DISPLAY_USE_CALCULATOR_AGAIN_MENU = """
 Please select from one of the following options by inputting the corresponding number
 
 [1] - Begin
@@ -77,11 +78,12 @@ def _get_menu_selection(menu_input: str) -> MenuSelection:
 def get_menu_input() -> MenuSelection:
     while True:
         try:
-            menu_selection = input(PROMPT_MENU_SELECTION)
+            print(DISPLAY_MENU_SELECTION)
+            menu_selection = input(PROMPT_INPUT)
             menu_input = _get_menu_selection(menu_selection)
             return menu_input
         except InvalidMenuSelectionError:
-            print(PROMPT_INVALID_INPUT)
+            print(DISPLAY_INVALID_INPUT)
 
 
 def _get_mathematical_selection(
@@ -101,13 +103,14 @@ def _get_mathematical_selection(
 def get_mathematial_operation_input() -> MathematicalOperation:
     while True:
         try:
-            mathematical_operation_selection = input(PROMPT_MATHEMATICAL_OPERATION)
+            print(DISPLAY_MATHEMATICAL_OPERATION_MENU)
+            mathematical_operation_selection = input(PROMPT_INPUT)
             mathematical_operation_input = _get_mathematical_selection(
                 mathematical_operation_selection
             )
             return mathematical_operation_input
         except InvalidMenuSelectionError:
-            print(PROMPT_INVALID_INPUT)
+            print(DISPLAY_INVALID_INPUT)
 
 
 def get_numerical_constant(prompt: str) -> int:
@@ -161,7 +164,7 @@ while True:
     print(DISPLAY_MENU_INTRODUCTION)
     menu_input = get_menu_input()
     if menu_input == MenuSelection.EXIT:
-        print(DISPLAY_MENU_EXIT)
+        print(DISPLAY_MENU_INTRODUCTION_EXIT)
         exit()
     calculator_result = get_calculator_result()
     print(f"{DISPLAY_CALCULATOR_RESULT}: {calculator_result}")
