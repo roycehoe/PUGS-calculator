@@ -1,10 +1,8 @@
-# Calculator
+# Introduction
 
-Example on how to use the python debugger for PUGS
+Thanks everyone for coming for my talk. Here is the example I used; feel free to fork and play around with this repo.
 
 # Further Readings
-
-Thanks everyone for coming to my talk.
 
 Here are some useful links about using the python debugger:
 
